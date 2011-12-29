@@ -69,6 +69,9 @@ class ReadabilityFeedHandler(RenderHandler):
         args = None
         try:
             args = hn.upgradeFeed(feed_url, agent=self.request.user_agent)
+        except hn.EmptyFeedException:
+            self.response.set_status(304)
+            return
         except hn.NotFeedException:
             self.response.set_status(404)
             self.response.out.write("couldn't find a feed at the given URL, is the website down?"+

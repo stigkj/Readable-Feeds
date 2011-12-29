@@ -10,6 +10,7 @@ Required: Python 2.1 or later
 Recommended: Python 2.3 or later
 Recommended: CJKCodecs and iconv_codec <http://cjkpython.i18n.org/>
 """
+import readability
 
 __version__ = "4.1"# + "$Revision: 1.92 $"[11:15] + "-cvs"
 __license__ = """Copyright (c) 2002-2006, Mark Pilgrim, All rights reserved.
@@ -2528,7 +2529,8 @@ def parse(url_file_stream_or_string, etag=None, modified=None, agent=None, refer
         result['version'] = ''
         result['debug_message'] = 'The feed has not changed since you last checked, ' + \
             'so the server sent no data.  This is a feature, not a bug!'
-        return result
+        raise readability.hn.EmptyFeedException("Feed has not changed since last check")
+
 
     # if there was a problem downloading, we're done
     if not data:

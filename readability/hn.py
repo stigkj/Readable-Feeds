@@ -272,4 +272,5 @@ if __name__ == "__main__":
     print upgradeFeed(HN_RSS_FEED)
 
 
-
+class EmptyFeedException(Exception):
+    pass
