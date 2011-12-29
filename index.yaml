@@ -1,0 +1,6 @@
+indexes:
+
+- kind: _AppEngineUtilities_Cache
+  properties:
+  - name: cachekey
+  - name: timeout
